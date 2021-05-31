@@ -6,7 +6,10 @@ import {addComment, getcommentsofvideobyid} from "../../Redux/actions/comment.ac
 const Comments = ({videoId , totalcomment}) => {
    console.log(videoId);
    const dispatch = useDispatch() ; 
+   
+   const user = useSelector(state => state.auth?.user)
     useEffect(() => {
+       
     
   dispatch(getcommentsofvideobyid(videoId)); 
     }, [videoId, dispatch])
@@ -32,7 +35,7 @@ const Comments = ({videoId , totalcomment}) => {
          <p>{totalcomment}</p>
          <div className='comments__form d-flex w-100 my-2'>
             <img
-               src='https://www.pngkey.com/png/full/114-1149878_setting-user-avatar-in-specific-size-without-breaking.png'
+               src={user?.photoURL}
                alt=''
                className='rounded-circle mr-3'
             />
